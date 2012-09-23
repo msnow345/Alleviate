@@ -13,19 +13,25 @@ $(document).ready(function(){
 
 	$('img').each(function (index, element){
 
+		var wrap = $('<div>', { 'class' : 'element-wrap' });
+
 		$.each(element.attributes, function ( index, attribute ) {
 
-			console.log(attribute);
+			var input_attributes = { 
+				
+				type : 'text', 
+				placeholder : attribute.name, 
+				value : attribute.value , 
+				keyup: function(){
 
-			var input = $('<input>', { type : 'text', 'placeholder' : attribute.name, value : attribute.value , keyup: function(){
+					$(element).attr(attribute.name, $(this).val());
 
-				$(element).attr(attribute.name, $(this).val());
-
-			} });
-
-			input.appendTo('#assets');
-
+				}
+			},
+			input = $('<input>', input_attributes).appendTo(wrap);
 		});
+
+		wrap.appendTo('#assets');
 
 	});
 
