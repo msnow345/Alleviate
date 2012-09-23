@@ -29,6 +29,7 @@
   <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.7.2.min.js"><\/script>')</script>
 	<script src="js/libs/selectivizr-1.0.2.min.js"></script>
 	<script src="js/alleviate.js"></script>
+	<script src="js/pseudo.js"></script>
 	<script src="js/plugins/jquery.accordion.js"></script>
 	<script src="js/plugins/jquery.gallery.js"></script>
 </head>
