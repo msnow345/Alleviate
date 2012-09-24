@@ -11,7 +11,7 @@ $(document).ready(function(){
 
 	console.log($(asset).length);
 
-	$('img').each(function (index, element){
+	$(asset).each(function (index, element){
 
 		var wrap = $('<div>', { 'class' : 'element-wrap' });
 
