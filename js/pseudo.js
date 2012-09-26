@@ -26,7 +26,7 @@ $(document).ready(function(){
 						'id' : index,
 						checked : preference.enabled,
 						change : function () {
-							preference.enabled = this.checked ? true : false;
+							preference.enabled = this.checked;
 							Pseudo.report_settings();
 						}
 					});
