@@ -3,36 +3,88 @@
 */
 $(document).ready(function(){
 
-	/* Asset viewer */
+	var Pseudo = {
 
-	console.log("pesudo nonsense");
+		init : function () {
+			
+			Pseudo.init_preferences();
+		},
 
-	var asset = 'img';
+		/*
+			init_preferences groups all the configurable settings 
+			and binds them to boolean values for use during parsing
+		*/
+		init_preferences : function () {
 
-	console.log($(asset).length);
+			$.each(Pseudo.parser, function (index, preference) {
 
-	$(asset).each(function (index, element){
+				var $wrap = $('<div>', { 'class' : 'preference-wrap' }),
+					$label = $('<label>', { 'for' : index, html : preference.name }),
+					$option = $('<input>', { 
+						'type' : 'checkbox', 
+						'name' : index + "_toggle", 
+						'id' : index,
+						checked : preference.enabled,
+						change : function () {
+							preference.enabled = this.checked ? true : false;
+							Pseudo.report_settings();
+						}
+					});
 
-		var wrap = $('<div>', { 'class' : 'element-wrap' });
+				$option.appendTo($wrap);
+				$label.appendTo($wrap);
+				$wrap.appendTo('#assets');
+			});
+		},
 
-		$.each(element.attributes, function ( index, attribute ) {
+		parser : {
 
-			var input_attributes = { 
-				
-				type : 'text', 
-				placeholder : attribute.name, 
-				value : attribute.value , 
-				keyup: function(){
+			wrap_links : {
 
-					$(element).attr(attribute.name, $(this).val());
+				name : "Wrap links",
+				description : "Wrap links with span and font tags",
+				enabled : true,
+				action : function () {
 
+					// Loop through markup and wrap links
 				}
 			},
-			input = $('<input>', input_attributes).appendTo(wrap);
-		});
 
-		wrap.appendTo('#assets');
+			fix_link_style : {
 
-	});
+				name : "Fix link style",
+				description : "Fix style for links that are bold, underlined or italic",
+				enabled : true,
+				action : function () {
 
+					// Loops through markup and apply new styles
+				}
+			},
+
+			repair_img_tags : {
+
+				name : "Fix image tags",
+				description : "Add alt tags and closing slashes to images",
+				enabled : true,
+				action : function () {
+
+					// Loop through markup and repair image tags
+
+				}
+			}
+		},
+
+		/* 
+			Debugging
+			Uses console, sorry!
+		*/
+		report_settings : function () {
+			
+			$.each(Pseudo.parser, function (name, value){
+				console.log(name + ": " + value.enabled);
+			});
+		}
+	};
+
+	Pseudo.init();
 });

@@ -12,13 +12,6 @@
 <br />
 <div class="container">
 
-	<div id="markup">
-
-		<img src="image.jpg" name="beach" class="light" alt="Picture of a beach" />
-		<img src="volcano.jpg" name="vocano" class="dark" alt="Picture of a volcano" />
-
-	</div>
-
 	<div id="assets">
 
 	</div>
