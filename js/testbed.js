@@ -29,9 +29,33 @@ var alleviate;
      
 		},
 
-		
+		render_preferences : function () {
 
+			// 	For all parsing.preferences as preference
+			// 		Render checkbox (with default settings) and bind (change) to variable
 
+		}
+
+		parsing : { 
+
+			preferences : {
+
+				link_wrap : {
+
+					name : "Link wrap",
+					description : "Wrap links with span and font tags"
+					default : true,
+					
+					action : function () {
+
+						// For all images, wrap with span and font as necessary
+
+					}
+				}
+
+			}
+
+		},
 
 
 
