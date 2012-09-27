@@ -1,15 +1,11 @@
 /* 
 	Couldn't resist some experiments/pesudo 
 */
-$(document).ready(function () {
-
-	"use strict";
+$(document).ready(function(){
 
 	var Pseudo = {
 
 		init : function () {
-
-			console.log('Initialising..');
 
 			Pseudo.init_preferences();
 		},
@@ -20,17 +16,13 @@ $(document).ready(function () {
 		*/
 		init_preferences : function () {
 
-			console.log(Pseudo.parser.preferences);
-
-			$.each(Pseudo.parser.preferences, function (index, preference) {
-
-				console.log(preference);
+			$.each(Pseudo.parser, function (index, preference) {
 
 				var $wrap = $('<div>', { 'class' : 'preference-wrap' }),
 					$label = $('<label>', { 'for' : index, html : preference.name }),
-					$option = $('<input>', {
-						'type' : 'checkbox',
-						'name' : index + "_toggle",
+					$option = $('<input>', { 
+						'type' : 'checkbox', 
+						'name' : index + "_toggle", 
 						'id' : index,
 						checked : preference.enabled,
 						change : function () {
@@ -47,48 +39,38 @@ $(document).ready(function () {
 
 		parser : {
 
-			preferences : {
+			wrap_links : {
 
-				wrap_links : {
+				name : "Wrap links",
+				description : "Wrap links with span and font tags",
+				enabled : true,
+				action : function () {
 
-					name : "Wrap links",
-					description : "Wrap links with span and font tags",
-					enabled : true,
-					action : function () {
-
-						// Loop through markup and wrap links
-					}
-				},
-
-				fix_link_style : {
-
-					name : "Fix link style",
-					description : "Fix style for links that are bold, underlined or italic",
-					enabled : true,
-					action : function () {
-
-						// Loops through markup and apply new styles
-					}
-				},
-
-				repair_img_tags : {
-
-					name : "Fix image tags",
-					description : "Add alt tags and closing slashes to images",
-					enabled : true,
-					action : function () {
-
-						// Loop through markup and repair image tags
-
-					}
+					// Loop through markup and wrap links
 				}
-
 			},
 
-			run : function () {
+			fix_link_style : {
 
-				// Main parsing loop
+				name : "Fix link style",
+				description : "Fix style for links that are bold, underlined or italic",
+				enabled : true,
+				action : function () {
 
+					// Loops through markup and apply new styles
+				}
+			},
+
+			repair_img_tags : {
+
+				name : "Fix image tags",
+				description : "Add alt tags and closing slashes to images",
+				enabled : true,
+				action : function () {
+
+					// Loop through markup and repair image tags
+
+				}
 			}
 		},
 
@@ -98,7 +80,7 @@ $(document).ready(function () {
 		*/
 		report_settings : function () {
 
-			$.each(Pseudo.parser.preferences, function (name, value) {
+			$.each(Pseudo.parser, function (name, value){
 				console.log(name + ": " + value.enabled);
 			});
 		}
